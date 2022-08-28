@@ -1,0 +1,36 @@
+/*Brings the Model and View components together
+ *to display the user interface (from View)
+ *and the data (from Model)
+ */
+import java.awt.event.*;
+
+public class ReverseTextController {
+	
+	/*Represents the Model component 
+	 *and provides the Controller with access to the Model
+	 */
+	private ReverseTextModel reverseTextModel;
+	/*Represents the View component
+	 *and provides the Controller with access to the View's properties and methods
+	 */
+	private ReverseTextView reverseTextView;
+	
+	ReverseTextController(ReverseTextModel reverseTextModel, ReverseTextView reverseTextView) {
+		this.reverseTextModel = reverseTextModel;
+		this.reverseTextView = reverseTextView;
+		
+		class ButtonListener implements ActionListener {
+			/* actionPerformed is invoked when user clicks the button
+			 * on the user interface in the View component
+			 */
+			public void actionPerformed(ActionEvent evt) {
+				reverseTextModel.setText(reverseTextView.getTxtText());
+				reverseTextView.setLblReverseText(reverseTextModel.reverseText());
+				
+			}
+		}
+		
+		reverseTextView.addBtnCalcListener(new ButtonListener());
+	}
+	
+}
