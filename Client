@@ -1,0 +1,28 @@
+//Used to launch the application
+
+public class ReverseTextClient {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Creates instance of each of the three MVC components
+		
+		//ReverseTextModel object
+		ReverseTextModel reverseTextModel = new ReverseTextModel();
+		//ReverseTextView object
+		ReverseTextView reverseTextView = new ReverseTextView(reverseTextModel);
+		//ReverseTextController object
+		ReverseTextController reverseTextController = new ReverseTextController(reverseTextModel, reverseTextView);
+		
+		//Set as true to show the user interface
+		reverseTextView.setVisible(true);
+		
+		/*Controller component is invoked when the button is clicked
+		 *
+		 *Model component used to perform the string reversal
+		 *which is passed back to and displayed on the View component
+		 */
+
+	}
+
+}
