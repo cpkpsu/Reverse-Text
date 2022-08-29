@@ -1,0 +1,56 @@
+//Represents the user interface in the application
+//And gets the data that is displayed from the Model component
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ReverseTextView extends JFrame {
+	//Text box control on interface
+	private JTextField txtText;
+	//Label control on interface
+	private JLabel lblReverseText;
+	//Button on interface
+	private JButton btnReverse;
+	//Represents Model component;
+	//provides the View with access to the Model's properties and methods
+	private ReverseTextModel reverseTextModel;
+	
+	
+	//Controls added to JPanel to establish user interface
+	ReverseTextView(ReverseTextModel reverseTextModel) {
+		this.reverseTextModel = reverseTextModel;
+		
+		txtText = new JTextField(10);		
+		lblReverseText = new JLabel("(reversed text will go here)");
+		btnReverse = new JButton("Reverse");
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.add(new JLabel("Enter a text value: "));
+		panel.add(txtText);
+		panel.add(new JLabel("Reversed text value is: "));			
+		panel.add(lblReverseText);		
+		panel.add(btnReverse);
+		
+		this.setContentPane(panel);
+		this.pack();
+		this.setTitle("MVC Example");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	//Adds action listener to the button
+	public void addBtnCalcListener(ActionListener actList) {
+		btnReverse.addActionListener(actList);
+	}
+	
+	// Retrieves value from textbox control
+	public String getTxtText() {
+		return txtText.getText();
+	}	
+	
+	//Sets the value of the label with the text
+	//After it has been reversed by the app
+	public void setLblReverseText(String reverseText) {		
+		lblReverseText.setText(reverseText);		
+	}
+}
